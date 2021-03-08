@@ -17,14 +17,15 @@
                       <p class="text-muted mb-0">We are currently only supporting Not-for-profit organisations. You will be required to prove NFP status before account is approved.</p>
                     </div>
                     <span class="clearfix"></span>
-                    <form role="form">
+                    <form role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="needs-validation">
                       <div class="form-group">
                         <label class="form-control-label">Business Name</label>
                         <div class="input-group input-group-merge">
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control" id="input-business" placeholder="Business Name">
+                            <input type="text" class="form-control <?php echo (!empty($businessname_err)) ? 'is-invalid' : ''; ?>" id="input-business" name="business"  value="<?php echo trim($_POST["business"]); ?>" placeholder="Business Name">
+                            <div class="invalid-feedback"><?php echo $businessname_err; ?></div>
                         </div>
                       </div>
                       <div class="form-group">
@@ -33,16 +34,17 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                           </div>
-                          <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                          <input type="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="input-email" name="email" placeholder="name@example.com" value="<?php echo trim($_POST["email"]); ?>">
+                          <div class="invalid-feedback"><?php echo $email_err; ?></div>
                         </div>
                       </div>
-                      <div class="form-group mb-4">
+                      <div class="form-group mb4">
                         <label class="form-control-label">Password</label>
                         <div class="input-group input-group-merge">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                           </div>
-                          <input type="password" class="form-control" id="input-password" placeholder="********">
+                          <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="input-password" name="password" placeholder="********" value="<?php echo trim($_POST["password"]); ?>">
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <a href="#" data-toggle="password-text" data-target="#input-password">
@@ -50,6 +52,7 @@
                               </a>
                             </span>
                           </div>
+                          <div class="invalid-feedback"><?php echo $password_err; ?></div>
                         </div>
                       </div>
                       <div class="form-group">
@@ -58,7 +61,8 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                           </div>
-                          <input type="password" class="form-control" id="input-password-confirm" placeholder="********">
+                          <input type="password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="input-password-confirm" name="confirm_password" placeholder="********" value="<?php echo trim($_POST["confirm_password"]) ?>">
+                          <div class="invalid-feedback"><?php echo $confirm_password_err; ?></div>
                         </div>
                       </div>
                       <div class="my-4">
@@ -71,7 +75,7 @@
                           <label class="custom-control-label" for="check-privacy">I agree to the <a href="#">privacy policy</a></label>
                         </div>
                       </div>
-                      <div class="mt-4"><button type="button" class="btn btn-sm btn-primary btn-icon rounded-pill">
+                      <div class="mt-4"><button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">
                           <span class="btn-inner--text">Create my account</span>
                           <span class="btn-inner--icon"><i class="fas fa-long-arrow-alt-right"></i></span>
                         </button></div>
