@@ -1,4 +1,3 @@
-<body class="application application-offset ready">
 <!-- Application container -->
   <div class="container-fluid container-application">
     <!-- Sidenav -->
@@ -9,7 +8,7 @@
         <div class="min-vh-100 py-5 d-flex align-items-center">
           <div class="w-100">
             <div class="row justify-content-center">
-              <div class="col-sm-8 col-lg-5">
+              <div class="col-sm-8 col-lg-6">
                 <div class="card shadow zindex-100 mb-0">
                   <div class="card-body px-md-5 py-5">
                     <div class="mb-5">
@@ -24,7 +23,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-building"></i></span>
                             </div>
-                            <input type="text" class="form-control <?php echo (!empty($businessname_err)) ? 'is-invalid' : ''; ?>" id="input-business" name="business"  value="<?php echo trim($_POST["business"]); ?>" placeholder="Business Name">
+                            <input type="text" class="form-control <?php echo (!empty($businessname_err)) ? 'is-invalid' : ''; ?>" id="input-business" name="business"  value="<?php echo (!empty($_POST["business"])) ? trim($_POST["business"]) : ''; ?>" placeholder="Business Name">
                             <div class="invalid-feedback"><?php echo $businessname_err; ?></div>
                         </div>
                       </div>
@@ -34,7 +33,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                           </div>
-                          <input type="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="input-email" name="email" placeholder="name@example.com" value="<?php echo trim($_POST["email"]); ?>">
+                          <input type="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="input-email" name="email" placeholder="name@example.com" value="<?php echo (!empty($_POST["email"])) ? trim($_POST["email"]) : ''; ?>">
                           <div class="invalid-feedback"><?php echo $email_err; ?></div>
                         </div>
                       </div>
@@ -44,7 +43,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                           </div>
-                          <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="input-password" name="password" placeholder="********" value="<?php echo trim($_POST["password"]); ?>">
+                          <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="input-password" name="password" placeholder="********" value="<?php echo (!empty($_POST["password"])) ? trim($_POST["password"]) : '';; ?>">
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <a href="#" data-toggle="password-text" data-target="#input-password">
@@ -61,7 +60,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                           </div>
-                          <input type="password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="input-password-confirm" name="confirm_password" placeholder="********" value="<?php echo trim($_POST["confirm_password"]) ?>">
+                          <input type="password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="input-password-confirm" name="confirm_password" placeholder="********" value="<?php echo (!empty($_POST["confirm_password"])) ? trim($_POST["confirm_password"]) : ''; ?>">
                           <div class="invalid-feedback"><?php echo $confirm_password_err; ?></div>
                         </div>
                       </div>

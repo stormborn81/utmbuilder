@@ -29,9 +29,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
 
                 if($stmt->num_rows == 1){
-                    $username_err = "This email is already taken.";
+                    $email_err = "This email is already taken.";
                 } else{
-                    $username = trim($_POST["email"]);
+                    $email = trim($_POST["email"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate business Name
     if(empty(trim($_POST["business"]))){
-        $username_err = "Please enter a business name.";
+        $businessname_err = "Please enter a business name.";
     } else{
 
         // Prepare a select statement
