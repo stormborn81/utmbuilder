@@ -11,6 +11,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 // Include config file
 require_once "includes/config/config.php";
 
+// Set Page meta data
+$pName = 'Login - UTMBuilder.space';
+$pDesc = 'UTM Builder is a tool to support marketing teams in building UTM tagging links for optimal analysis of performance.';
+
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
@@ -98,9 +102,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
+            $stmt->close();
 
-
-        }else{echo $mysqli->error;}
+        }
     }
 
     // Close connection

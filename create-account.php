@@ -2,9 +2,13 @@
 // Include config file
 require_once "includes/config/config.php";
 
+// Set Page meta data
+$pName = 'Create your account - UTMBuilder.space';
+$pDesc = 'UTM Builder is a tool to support marketing teams in building UTM tagging links for optimal analysis of performance.';
+
 // Define variables and initialize with empty values
-$businessname = $email = $password = $confirm_password = "";
-$businessname_err = $email_err = $password_err = $confirm_password_err = "";
+$businessname = $email = $password = $confirm_password = $check_terms = "";
+$businessname_err = $email_err = $password_err = $confirm_password_err = $check_terms_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -59,6 +63,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }
+    }
+
+    //validate checkbox
+    if(empty(trim($_POST["check_terms"]))){
+        $check_terms_err = "Please confirm you agree to the terms and conditions and privacy policy.";
+    } else{
+        $check_terms = trim($_POST["check_terms"]);
     }
 
     // Validate business Name

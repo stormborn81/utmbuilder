@@ -66,12 +66,8 @@
                       </div>
                       <div class="my-4">
                         <div class="custom-control custom-checkbox mb-3">
-                          <input type="checkbox" class="custom-control-input" id="check-terms">
-                          <label class="custom-control-label" for="check-terms">I agree to the <a href="#">terms and conditions</a></label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="check-privacy">
-                          <label class="custom-control-label" for="check-privacy">I agree to the <a href="#">privacy policy</a></label>
+                          <input type="checkbox" class="custom-control-input" id="check-terms" name="check-terms" value="yes" required>
+                          <label class="custom-control-label" for="check-terms">I agree to the <a href="legal/terms-conditions.php" target="_blank">terms and conditions</a> and the <a href="legal/privacy-policy.html" target="_blank">Privacy Policy</a></label>
                         </div>
                       </div>
                       <div class="mt-4"><button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">

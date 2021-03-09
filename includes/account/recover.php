@@ -14,20 +14,20 @@
                   <div class="card-body px-md-5 py-5">
                     <div class="mb-5">
                       <h6 class="h3">Password reset</h6>
-                      <p class="text-muted mb-0">Enter your email below to proceed.</p>
+                      <p class="text-muted mb-0">Enter your email below to receive a reset password email in your inbox. Please check your spam if it is not in your inbox in 20 minutes .</p>
                     </div>
                     <span class="clearfix"></span>
-                    <form role="form">
+                    <form role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="needs-validation">
                       <div class="form-group">
                         <label class="form-control-label">Email address</label>
                         <div class="input-group input-group-merge">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                           </div>
-                          <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                          <input type="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="input-email" placeholder="name@example.com" name="email" value="<?php echo (!empty($_POST["email"])) ? trim($_POST["email"]) : '';  ?>" >
                         </div>
                       </div>
-                      <div class="mt-4"><button type="button" class="btn btn-sm btn-primary btn-icon rounded-pill">
+                      <div class="mt-4"><button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">
                           <span class="btn-inner--text">Reset password</span>
                           <span class="btn-inner--icon"><i class="fas fa-long-arrow-alt-right"></i></span>
                         </button></div>

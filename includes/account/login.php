@@ -1,4 +1,3 @@
-
 <!-- Application container -->
   <div class="container-fluid container-application">
     <!-- Sidenav -->
@@ -16,10 +15,14 @@
                       <h6 class="h3">Login</h6>
                       <?php
                       if (isset($_GET['signup'])) {
-                        echo '<p class="text-muted mb-0">Your account has been created. Please sign in to your account to continue.</p>';
+                        echo '<p class="text-muted mb-0">Your account has been created, however your Not-for-profit status needs to be verified before you can use your account - you will be notified within 24 hours when your account is ready.</p>';
                       } else if (isset($_GET['logout'])) {
                         echo '<p class="text-muted mb-0">You have logged out of your session. Please sign in to your account to continue.</p>';
-                      } else {
+                      } else if (isset($_GET['recovered'])) {
+                        echo '<p class="text-muted mb-0">An email has been sent to you with your reset password link.</p>';
+                      }else if (isset($_GET['reset'])) {
+                        echo '<p class="text-muted mb-0">You have reset your password. Please sign in to your account to continue.</p>';
+                      }else {
                         echo '<p class="text-muted mb-0">Sign in to your account to enter your space.</p>';
                       }
                       ?>
@@ -77,3 +80,31 @@
       <!-- Footer -->
     </div>
   </div>
+  <!-- Tracking events -->
+  <?php
+    if (isset($_GET['signup'])) {
+  ?>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+        	'event' : 'signup',
+        	'loginMethod' : 'email', // this should be replaced with an actual login method (when others are added)
+        	'utm_acct_type':'Basic - Universal', // this shows whether the account is enabled for basic or custom UTMs
+        	'business_type':'NFP' // this shows whether the account is NFP, Superuser, business or agency
+        });
+        </script>
+  <?php
+    } else if (isset($_GET['logout'])) {
+  ?>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+        	'event' : 'logout',
+        	'loginMethod' : 'email', // this should be replaced with an actual login method (when others are added)
+        	'utm_acct_type':localStorage.getItem('utm_acct_type'), // this shows whether the account is enabled for basic or custom UTMs
+        	'business_type':localStorage.getItem('business_type') // this shows whether the account is NFP, Superuser, business or agency
+        });
+        </script>
+  <?php
+    }
+  ?>
