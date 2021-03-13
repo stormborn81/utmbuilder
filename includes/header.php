@@ -13,13 +13,13 @@
   <meta name="author" content="Storm Jarvie">
   <title><?php echo $pName; ?></title>
   <!-- Favicon -->
-  <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="<?php echo $site_URL; ?>assets/img/brand/favicon.png" type="image/png">
   <!-- Font Awesome 5 -->
-  <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo $site_URL; ?>assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
   <!-- Purpose CSS -->
-  <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+  <link rel="stylesheet" href="<?php echo $site_URL; ?>assets/css/purpose.css" id="stylesheet">
   <!--UTMBuilder Specific Styles-->
-  <link rel="stylesheet" href="assets/css/utmbuilder.css" id="stylesheet">
+  <link rel="stylesheet" href="<?php echo $site_URL; ?>assets/css/utmbuilder.css" id="stylesheet">
 </head>
 <body class="application application-offset ready">
 <!-- Google Tag Manager (noscript) -->

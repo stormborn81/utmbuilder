@@ -8,7 +8,8 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'utmbuilder');
 
 // Define environments
-$site_URL = 'http://192.168.64.2/utmbuilder';
+global $site_URL;
+$site_URL = 'http://192.168.64.2/utmbuilder/';
 
 /* Attempt to connect to MySQL database */
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);

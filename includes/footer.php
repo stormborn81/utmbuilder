@@ -1,19 +1,19 @@
 <!-- Scripts -->
 <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-<script src="assets/js/purpose.core.js"></script>
+<script src="<?php echo $site_URL; ?>assets/js/purpose.core.js"></script>
   <!-- Page JS -->
-  <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+  <script src="<?php echo $site_URL; ?>assets/libs/swiper/dist/js/swiper.min.js"></script>
   <!-- Purpose JS -->
-  <script src="assets/js/purpose.js"></script>
+  <script src="<?php echo $site_URL; ?>assets/js/purpose.js"></script>
   <!-- UTMBUilder JS -->
   <?php
   if(strpos($_SERVER['REQUEST_URI'],'dashboard.php') !==false) {
   ?>
-  <script src="assets/js/utmbuilder.js" onload="getGreeting()"></script>
+  <script src="<?php echo $site_URL; ?>assets/js/utmbuilder.js" onload="getGreeting()"></script>
   <?php
   }else {
   ?>
-  <script src="assets/js/utmbuilder.js"></script>
+  <script src="<?php echo $site_URL; ?>assets/js/utmbuilder.js"></script>
   <?php
   }
   ?>

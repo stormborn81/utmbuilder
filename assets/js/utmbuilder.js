@@ -53,3 +53,7 @@ function getGreeting() {
     document.getElementById("greeting").innerHTML = msg;
     document.getElementById("subgreeting").innerHTML = submsg;
 }
+
+$("#input-channel").change(function() {
+    $("#input-source").load("../../includes/utms/source.php?choice=" + $("#input-channel").val());
+});
