@@ -5,6 +5,8 @@
   <script src="<?php echo $site_URL; ?>assets/libs/swiper/dist/js/swiper.min.js"></script>
   <!-- Purpose JS -->
   <script src="<?php echo $site_URL; ?>assets/js/purpose.js"></script>
+  <!-- Copy to Clipboard library -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
   <!-- UTMBUilder JS -->
   <?php
   if(strpos($_SERVER['REQUEST_URI'],'dashboard.php') !==false) {
@@ -62,8 +64,23 @@
       });
   </script>
   <?php
-  }
+  } else if(isset($_GET['action']) && $_GET['action']=='utm-delete') {
+    $pageSet = 'dashboard';
+    if (strpos($_SERVER['REQUEST_URI'], "utm-listing") !== false){
+         // car found
+         $pageSet = 'create';
+    }
   ?>
+  <script>
+  function trackCopy() {
+      window.dataLayer.push({
+          'event' : 'utm_action',
+          'utm_action' : 'delete', // this should be replaced with an actual login method (when others are added)
+          'utm_page':<?php echo $pageSet; ?>
+      });
+  }
+  </script>
+  <?php } ?>
 </body>
 
 </html>

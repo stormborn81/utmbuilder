@@ -14,6 +14,10 @@ $site_URL = 'http://192.168.64.2/utmbuilder/';
 /* Attempt to connect to MySQL database */
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
+// global set number of rows per table
+global $rowsperpage;
+$rowsperpage = 20;
+
 // Check connection
 if($mysqli === false){
     die("ERROR: Could not connect. " . $mysqli->connect_error);

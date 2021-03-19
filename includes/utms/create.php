@@ -44,8 +44,17 @@
                         </div>
                       </div>
                       <div class="card-body">
-                           <h6>The created UTM is: <?php echo $utm; ?></h6>
-                           <p> Create another UTM below</p>
+                           <h6>The created UTM is: </h6>
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-10">
+                                        <?php echo $utm; ?>
+                                    </div>
+                                    <div class="col-2 text-right">
+                                        <a data-clipboard-text="<?php echo $utm; ?>" class="action-item copy" data-toggle="tooltip" data-placement="top" title="Copy URL with UTM"><i class="far fa-copy"></i> Copy URL + UTM</a>
+                                    </div>
+                                </div>
+
+                           <h6> <br />Create another UTM below</h6>
                       </div>
                    </div>
                    <?php } ?>
@@ -115,4 +124,22 @@
                 </div>
             </div>
         </div>
+
+        <script>
+        function trackCopy() {
+            window.dataLayer.push({
+                'event' : 'utm_action',
+                'utm_action' : 'copy', // this should be replaced with an actual login method (when others are added)
+                'utm_page':'create'
+            });
+        }
+
+        <?php if($urlcomplete =="true") { ?>
+            window.dataLayer.push({
+                'event' : 'utm_create',
+                'utm_action' : 'create', // this should be replaced with an actual login method (when others are added)
+                'utm_page':'create'
+            });
+        <?php } ?>
+        </script>
 

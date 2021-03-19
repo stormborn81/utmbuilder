@@ -1,3 +1,24 @@
 .white {
     fill: #ffffff;
 }
+td.wrappable {
+
+    /* css-3 */
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+
+}
+.avatar-xs {
+    width: 1.4375rem;
+    height: 1.4375rem;
+    font-size: .75rem;
+    border-radius: .1rem;
+}
+.dropdown-item.active {
+    color: #6e00ff;
+    text-decoration: none;
+    background-color: transparent;
+}

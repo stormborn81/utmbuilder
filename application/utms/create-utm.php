@@ -104,17 +104,18 @@
                                 }
 
                                 // Insert URL/UTM record
-                                $urlSQL = 'INSERT INTO urlutm (URL, CREATED_BY, ACCOUNT_ID, CHANNEL_ID) VALUES (?, ?, ?, ?)';
+                                $urlSQL = 'INSERT INTO urlutm (URL, CREATED_BY, ACCOUNT_ID, CHANNEL_ID, SOURCE_ID) VALUES (?, ?, ?, ?,?)';
 
                                 if($ustmt = $mysqli->prepare($urlSQL)){
 
-                                    $ustmt->bind_param("ssss", $param_url, $param_uID, $param_aID, $param_cID);
+                                    $ustmt->bind_param("sssss", $param_url, $param_uID, $param_aID, $param_cID, $param_sID);
 
                                     // Set Parameter
                                     $param_url = $utm;
                                     $param_uID = $_SESSION["user_id"];
                                     $param_aID = $_SESSION['acct_id'];
                                     $param_cID = $channel;
+                                    $param_sID = $source;
 
                                     if($ustmt->execute()){
                                         $ustmt->store_result();
@@ -180,8 +181,10 @@ if($chanstmt->execute()){
 }
 //close connection
 
- include ('../../includes/header.php'); ?>
-<?php include ('../../includes/dashboard/dashboard-common-head.php'); ?>
-<?php include ('../../includes/utms/create.php'); ?>
-<?php include ('../../includes/dashboard/dashboard-common-foot.php'); ?>
-<?php include ('../../includes/footer.php'); ?>
+ include ('../../includes/header.php');
+include ('../../includes/dashboard/dashboard-common-head.php');
+include ('../../includes/utms/create.php');
+include ('../../includes/dashboard/dashboard-common-foot.php');
+include ('../../includes/footer.php');
+
+?>

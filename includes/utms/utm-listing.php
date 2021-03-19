@@ -1,0 +1,153 @@
+        <!-- Page content -->
+        <div class="page-content">
+            <div class="page-title">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0">
+                      <!-- Page title + Go Back button -->
+                      <div class="d-inline-block">
+                        <h5 class="h4 d-inline-block font-weight-400 mb-0 text-white">UTMs</h5>
+                      </div>
+                      <!-- Additional info -->
+                      <div class="align-items-center ml-4 d-inline-flex">
+                        <span class="h4 text-info mb-0 mr-2"><?php echo $numrows; ?></span>
+                        <span class="text-sm opacity-7 text-white">total UTMS created</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end">
+                      <div class="actions actions-dark d-inline-block">
+                         <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" role="button" class="btn btn-sm btn-white btn-icon rounded-pill">
+                            <i class="fas fa-tag"></i>
+                            <span class="d-none d-sm-inline-block">Create New UTM</span>
+                         </a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <!-- UTM listings -->
+            <?php if($numrows > 0) { ?>
+            <div class="card">
+                <div class="card-header actions-toolbar border-0">
+
+                  <div class="row justify-content-between align-items-center">
+                      <div class="col">
+                        <h6 class="d-inline-block mb-0">All UTMs</h6>
+                      </div>
+                      <div class="col text-right">
+                        <div class="actions">
+                          <div class="dropdown mr-3">
+                            <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-filter"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a class="dropdown-item <?php echo ($direction=='DESC') ? 'active' : ''; ?>" href="<?php printf( '%s?direction=DESC&channelid='.$chans, $_SERVER['PHP_SELF'] ); ?>">
+                                <i class="fas fa-sort-amount-down"></i>Newest -> Oldest
+                              </a>
+                              <a class="dropdown-item <?php echo ($direction=='ASC') ? 'active' : ''; ?>" href="<?php printf( '%s?direction=ASC&channelid='.$chans, $_SERVER['PHP_SELF'] ); ?>">
+                                <i class="fas fa-sort-amount-up"></i>Oldest -> Newest
+                              </a>
+                            </div>
+                          </div>
+                          <div class="dropdown">
+                            <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-stream"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <?php if($chans != '') { ?>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>" class="dropdown-item">Reset to all channels</a>
+                              <?php } ?>
+                              <?php echo $chfilt; ?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center">
+                        <thead>
+                            <tr>
+                              <th scope="col" class="sort" data-sort="channel">Channel</th>
+                              <th scope="col" class="sort" data-sort="source">Source</th>
+                              <th scope="col" class="sort" data-sort="url">URL</th>
+                              <th scope="col" class="sort" data-sort="date">Date Created</th>
+                              <th scope="col" class="sort" data-sort="author">Created By</th>
+                              <th scope="col" >Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            <?php echo $list; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- LOAD MORE-->
+            <?php if($numrows > $rowsperpage) { ?>
+            <div class="mt-4 text-center">
+              <a class="btn btn-sm btn-neutral rounded-pill shadow hover-translate-y-n3 load-more">Load more</a>
+              <input type="hidden" id="row" value="0">
+              <input type="hidden" id="direction" value="<?php echo $direction; ?>">
+              <input type="hidden" id="channelid" value="<?php echo $chansid; ?>">
+              <input type="hidden" id="all" value="<?php echo $numrows; ?>">
+              <input type="hidden" id="numrows" value="<?php echo $rowsperpage; ?>">
+            </div>
+            <?php }
+             } else { ?>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                   <div class="card card-fluid">
+                      <div class="card-body text-center">
+                           <a href="#" class="avatar avatar-lg">
+                                <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/33-rocket start.svg" alt="take-off" />
+                           </a>
+                           <h5 class="mb-4">Before you take off</h5>
+                           <p class="mt-4 mb-0">
+                             Not sure what a UTM is or how it can help you understand how your marketing activities work? Read this article before you start.
+                           </p>
+                           <a href="<?php echo $site_URL; ?>articles/what-is-a-utm.php" class="btn btn-sm btn-block btn-secondary mt-5">What is a UTM answered...</a>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                   <div class="card card-fluid">
+                      <div class="card-body text-center">
+                        <a href="#" class="avatar avatar-lg">
+                            <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/43-astronaut and flag.svg" alt="Create first utm" />
+                        </a>
+                        <h5 class="mb-4">Create your first UTM!</h5>
+                        <p class="mt-4 mb-0">
+                          Use the UTM builder to create marketing URLs that effortlessly work with Google Analytics default channel groupings
+                        </p>
+                        <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" class="btn btn-sm btn-block btn-primary mt-5">Create your 1st UTM</a>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                   <div class="card card-fluid">
+                      <div class="card-body text-center">
+                          <a href="#" class="avatar avatar-lg">
+                              <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/14-galaxy.svg" alt="Take advantage of your utms" />
+                          </a>
+                          <h5 class="mb-4">To infinity and beyond</h5>
+                          <p class="mt-4 mb-0">
+                            UTM tagging is the start of your journey, next is using Google Analytics to understand your traffic and make decisions based on what you see.
+                          </p>
+                          <a href="<?php echo $site_URL; ?>articles/using-ga-to-view-channel-activity.php" class="btn btn-sm btn-block btn-secondary mt-5">Make the most of GA today</a>
+                      </div>
+                   </div>
+                </div>
+            </div>
+
+             <?php } ?>
+
+        </div>
+
+        <script>
+        function trackCopy() {
+            window.dataLayer.push({
+            	'event' : 'utm_action',
+            	'utm_action' : 'copy', // this should be replaced with an actual login method (when others are added)
+            	'utm_page':'list'
+            });
+        }
+        </script>

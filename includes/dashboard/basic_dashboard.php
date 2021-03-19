@@ -16,7 +16,7 @@
                   <div class="card-header border-0">
                     <div class="row align-items-center">
                       <div class="col">
-                        <h6 class="mb-0">Recent UTMs Created</h6>
+                        <h6 class="mb-0">Recent UTMs Created (<?php echo $filrows; ?>)</h6>
                       </div>
                       <div class="col-auto">
                         <div class="actions">
@@ -24,7 +24,7 @@
                             <i class="fas fa-project-diagram"></i>
                             <span class="d-none d-sm-inline-block mr-4">See all UTMs</span>
                           </a>
-                          <a href="application/utms/create-utm.php" role="button" class="btn btn-primary btn-icon">
+                          <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" role="button" class="btn btn-primary btn-icon">
                             <i class="fas fa-tag"></i>
                             <span class="d-none d-sm-inline-block">Create New UTM</span>
                           </a>
@@ -32,41 +32,93 @@
                       </div>
                     </div>
                   </div>
+                  <?php
+                  //show table if there are UTMs to display
+                  if($filrows > 0) { ?>
                   <div class="table-responsive">
                     <table class="table align-items-center">
                       <thead>
                         <tr>
-                          <th scope="col" class="sort" data-sort="channel"></th>
-                          <th scope="col" class="sort" data-sort="channel-name">Channel</th>
+                          <th scope="col" class="sort" data-sort="channel">Channel</th>
+                          <th scope="col" class="sort" data-sort="source">Source</th>
                           <th scope="col" class="sort" data-sort="url">URL</th>
-                          <th scope="col" class="sort" data-sort="date_create">Date Created</th>
+                          <th scope="col" class="sort" data-sort="date">Date Created</th>
+                          <th scope="col" class="sort" data-sort="author">Created By</th>
+                          <th scope="col" >Actions</th>
                         </tr>
                       </thead>
                       <tbody class="list">
-                        <tr>
-                          <th scope="row">
-                            <div class="media align-items-center">
-                              <div>
-                                <img alt="Channel Name" src="<?php echo $site_URL; ?>assets/img/theme/light/team-1-800x800.jpg" class="avatar rounded-circle avatar-sm">
-                              </div>
-                            </div>
-                          </th>
-                          <td>
-                            <span>Channel name</span>
-                          </td>
-                          <td>
-                            URL
-                          </td>
-                          <td>
-                            20 Feb 2021
-                          </td>
-                        </tr>
+                        <?php echo $list; ?>
                       </tbody>
                     </table>
                   </div>
+                  <?php } ?>
                 </div>
               </div>
             </div>
+            <?php //handle empty data
+            if($filrows==0) { ?>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                   <div class="card card-fluid">
+                      <div class="card-body text-center">
+                           <a href="#" class="avatar avatar-lg">
+                                <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/33-rocket start.svg" alt="take-off" />
+                           </a>
+                           <h5 class="mb-4">Before you take off</h5>
+                           <p class="mt-4 mb-0">
+                             Not sure what a UTM is or how it can help you understand how your marketing activities work? Read this article before you start.
+                           </p>
+                           <a href="<?php echo $site_URL; ?>articles/what-is-a-utm.php" class="btn btn-sm btn-block btn-secondary mt-5">What is a UTM answered...</a>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                   <div class="card card-fluid">
+                      <div class="card-body text-center">
+                        <a href="#" class="avatar avatar-lg">
+                            <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/43-astronaut and flag.svg" alt="Create first utm" />
+                        </a>
+                        <h5 class="mb-4">Create your first UTM!</h5>
+                        <p class="mt-4 mb-0">
+                          Use the UTM builder to create marketing URLs that effortlessly work with Google Analytics default channel groupings
+                        </p>
+                        <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" class="btn btn-sm btn-block btn-primary mt-5">Create your 1st UTM</a>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                   <div class="card card-fluid">
+                      <div class="card-body text-center">
+                          <a href="#" class="avatar avatar-lg">
+                              <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/14-galaxy.svg" alt="Take advantage of your utms" />
+                          </a>
+                          <h5 class="mb-4">To infinity and beyond</h5>
+                          <p class="mt-4 mb-0">
+                            UTM tagging is the start of your journey, next is using Google Analytics to understand your traffic and make decisions based on what you see.
+                          </p>
+                          <a href="<?php echo $site_URL; ?>articles/using-ga-to-view-channel-activity.php" class="btn btn-sm btn-block btn-secondary mt-5">Make the most of GA today</a>
+                      </div>
+                   </div>
+                </div>
+            </div>
+            <?php } else {
+            // show analytics
+            ?>
+            <div class="row">
+
+            </div>
+            <?php } ?>
         </div>
+
+        <script>
+        function trackCopy() {
+            window.dataLayer.push({
+                'event' : 'utm_action',
+                'utm_action' : 'copy', // this should be replaced with an actual login method (when others are added)
+                'utm_page':'dashboard'
+            });
+        }
+        </script>
 
 

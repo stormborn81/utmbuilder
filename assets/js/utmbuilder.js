@@ -4,7 +4,9 @@
 //
 
 'use strict';
+// instantiate dataLayer
 window.dataLayer = window.dataLayer || [];
+
 
 // Check if local and Session storage is available
 function storageAvailable(type) {
@@ -56,4 +58,108 @@ function getGreeting() {
 
 $("#input-channel").change(function() {
     $("#input-source").load("../../includes/utms/source.php?choice=" + $("#input-channel").val());
+});
+
+//instantiate ClipBoard
+var clipboard = new ClipboardJS('.copy');
+
+clipboard.on('success', function(e) {
+  setTooltip(e.trigger, 'Copied!');
+  hideTooltip(e.trigger);
+  trackCopy();
+});
+
+clipboard.on('error', function(e) {
+  setTooltip(e.trigger, 'Failed!');
+  hideTooltip(e.trigger);
+});
+
+function setTooltip(btn, message) {
+  $(btn).tooltip('hide')
+    .attr('data-original-title', message)
+    .tooltip('show');
+}
+
+function hideTooltip(btn) {
+  setTimeout(function() {
+    $(btn).tooltip('hide');
+  }, 2000);
+}
+
+
+//load more handling
+$(document).ready(function(){
+
+    // Load more data
+    $('.load-more').click(function(){
+        var row = Number($('#row').val());
+        var allcount = Number($('#all').val());
+        var rowperpage = Number($('#numrows').val());
+
+        if(row==0){
+            var rowperpageminus = allcount-(row+rowperpage);
+        } else {
+            var rowperpageminus = allcount-Number($('#row').val());
+            alert(rowperpageminus);
+        }
+
+        var direction = $('#direction').val();
+        var channelid = $('#channelid').val();
+        row = row + rowperpage;
+
+        if(row < allcount){
+            $("#row").val(row);
+
+            $.ajax({
+                url: '../../application/utms/loadmore.php',
+                type: 'post',
+                data: {row:row, channelid:channelid, direction:direction},
+                beforeSend:function(){
+                    $(".load-more").text("Loading...");
+                },
+                success: function(response){
+
+                    // Setting little delay while displaying new content
+                    setTimeout(function() {
+                        // appending posts after last post with class="post"
+                        $(".utm:last").after(response).show().fadeIn("slow");
+
+                        var rowno = row + rowperpage;
+
+                        // checking row value is greater than allcount or not
+                        if(rowno >= allcount){
+
+                            // Change the text and background
+                            $('.load-more').text("Hide");
+                           // $('.load-more').css("background","darkorchid");
+                        }else{
+                            $(".load-more").text("Load more");
+                        }
+                    }, 2000);
+
+                }
+            });
+        }else{
+            $('.load-more').text("Loading...");
+
+            // Setting little delay while removing contents
+            setTimeout(function() {
+                // When row is greater than allcount then remove all class='post' element after 3 element
+                 $('.utm:nth-child('+rowperpageminus+')').nextAll('.utm').remove();
+
+
+                // Reset the value of row
+                $("#row").val(0);
+
+                // Change the text and background
+                $('.load-more').text("Load more");
+                //$('.load-more').css("background","#15a9ce");
+
+            }, 2000);
+
+
+        }
+
+    });
+
 });
