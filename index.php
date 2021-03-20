@@ -46,7 +46,7 @@ include ('includes/header.php');?>
   <section class="slice slice-lg bg-gradient-dark header-web-app" data-offset-top="#header-main">
     <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
        <figure class="w-100 d-none d-lg-block">
-           <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-circles-1.svg" class="svg-inject">
+           <img alt="Image placeholder" src="assets/img/svg/backgrounds/stars.svg" class="svg-inject">
        </figure>
     </div>
     <div class="container position-relative zindex-100">
