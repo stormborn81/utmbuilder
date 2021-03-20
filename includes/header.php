@@ -21,7 +21,11 @@
   <!--UTMBuilder Specific Styles-->
   <link rel="stylesheet" href="<?php echo $site_URL; ?>assets/css/utmbuilder.css" id="stylesheet">
 </head>
+<?php if(isset($page) && $page=='public') { ?>
+<body class="ready">
+<?php } else {  ?>
 <body class="application application-offset ready">
+<?php } ?>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBS39LG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
