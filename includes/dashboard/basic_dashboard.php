@@ -9,6 +9,24 @@
                 </div>
               </div>
             </div>
+            <!-- Error Handling if necessary -->
+            <?php if($error == 'delete-no-utm') { ?>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Houston, we have a problem.</strong><br > It appears you tried to delete a UTM without the proper link information. If you keep receiving this error, please let our support team know at <a href="mailto:utmbuilderspace@gmail.com" class="alert-link">utmbuilderspace@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <?php } else if($error == 'delete-general') {   ?>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Houston, we have a problem.</strong><br > There has been an error in trying to delete your UTM, please try again later. If you keep receiving this error, please let our support team know at <a href="mailto:utmbuilderspace@gmail.com" class="alert-link">utmbuilderspace@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
             <!-- Project details -->
             <div class="row">
               <div class="col-xl-12">
@@ -57,7 +75,7 @@
               </div>
             </div>
             <?php //handle empty data
-            if($filrows==0) { ?>
+            if($filrows<=5) { ?>
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
                    <div class="card card-fluid">
@@ -79,11 +97,11 @@
                         <a href="#" class="avatar avatar-lg">
                             <img src="<?php echo $site_URL; ?>assets/img/icons/space-icons/SVG/EDITABLE STROKES/43-astronaut and flag.svg" alt="Create first utm" />
                         </a>
-                        <h5 class="mb-4">Create your first UTM!</h5>
+                        <h5 class="mb-4">Create your first UTMs!</h5>
                         <p class="mt-4 mb-0">
                           Use the UTM builder to create marketing URLs that effortlessly work with Google Analytics default channel groupings
                         </p>
-                        <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" class="btn btn-sm btn-block btn-primary mt-5">Create your 1st UTM</a>
+                        <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" class="btn btn-sm btn-block btn-primary mt-5">Create a UTM</a>
                       </div>
                    </div>
                 </div>

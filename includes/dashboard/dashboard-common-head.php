@@ -4,6 +4,9 @@
     <div class="sidenav" id="sidenav-main">
       <!-- Sidenav header -->
       <div class="sidenav-header d-flex align-items-center">
+        <a class="navbar-brand" href="../index.php">
+          <img src="<?php echo $site_URL; ?>assets/img/brand/logo-white-space.png" class="navbar-brand-img" alt="UTMBuilder.space">
+        </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
           <div class="sidenav-toggler sidenav-toggler-dark d-md-none" data-action="sidenav-unpin" data-target="#sidenav-main">
@@ -32,19 +35,19 @@
       </div>
       <!-- Application nav -->
       <div class="nav-application clearfix">
-        <a href="<?php echo $site_URL; ?>dashboard.php" class="btn btn-square text-sm">
+        <a href="<?php echo $site_URL; ?>dashboard.php" class="btn btn-square text-sm <?php echo (!empty($page) && $page=='home') ? 'active' : ''; ?>">
           <span class="btn-inner--icon d-block"><i class="fas fa-home fa-2x"></i></span>
           <span class="btn-inner--icon d-block pt-2">Home</span>
         </a>
-        <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" class="btn btn-square text-sm">
+        <a href="<?php echo $site_URL; ?>application/utms/create-utm.php" class="btn btn-square text-sm <?php echo (!empty($page) && $page=='create-utm') ? 'active' : ''; ?>">
           <span class="btn-inner--icon d-block"><i class="fas fa-tag fa-2x"></i></span>
           <span class="btn-inner--icon d-block pt-2">Create UTM</span>
         </a>
-        <a href="<?php echo $site_URL; ?>application/utms/utm-listing.php" class="btn btn-square text-sm">
+        <a href="<?php echo $site_URL; ?>application/utms/utm-listing.php" class="btn btn-square text-sm <?php echo (!empty($page) && $page=='list-utm') ? 'active' : ''; ?>">
           <span class="btn-inner--icon d-block"><i class="fas fa-project-diagram fa-2x"></i></span>
           <span class="btn-inner--icon d-block pt-2">List UTMs</span>
         </a>
-        <a href="<?php echo $site_URL; ?>application/user/profile.php" class="btn btn-square text-sm">
+        <a href="<?php echo $site_URL; ?>application/user/profile.php" class="btn btn-square text-sm <?php echo (!empty($page) && $page='home') ? 'profile' : ''; ?>">
           <span class="btn-inner--icon d-block"><i class="fas fa-user-ninja fa-2x"></i></span>
           <span class="btn-inner--icon d-block pt-2">Profile</span>
         </a>

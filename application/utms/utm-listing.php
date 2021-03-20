@@ -6,6 +6,23 @@
  // Set Page meta data
  $pName = 'UTMs - '.$_SESSION['business_name'].' - UTMBuilder.space';
  $pDesc = 'UTM Builder is a tool to support marketing teams in building UTM tagging links for optimal analysis of performance.';
+ $page = 'list-utm';
+
+  $error = '';
+
+  // error handling
+  if(isset($_GET['action']) && isset($_GET['error'])) {
+     // delete errors
+     if($_GET['action']=='utm-delete-error') {
+         if($_GET['error'] == 'no-utm' || $_GET['error'] == 'no-source') {
+             $error = 'delete-no-utm';
+         }else if($_GET['error'] == 'delete-error-mysqli' || $_GET['error'] == 'delete-error-stmt') {
+             $error = 'delete-general';
+         }
+     }
+  }
+
+
 
  $numrows = 0;
  $chfilt = $chansid = '';
@@ -114,7 +131,7 @@ if($cstmt = $mysqli->prepare($sql)){
                 $list .= '<td>';
                 //action info
                 $list .= '<a href="#" data-clipboard-text="'.$url.'" class="action-item copy" data-toggle="tooltip" data-placement="top" title="Copy URL with UTM"><i class="far fa-copy"></i></a>';
-                $list .= '<a href="'.$site_URL.'application/utms/edit-utm.php?utm='.$id.'" class="action-item" data-toggle="tooltip" data-placement="top" title="Edit URL with UTM"><i class="fas fa-edit"></i></a>';
+                //$list .= '<a href="'.$site_URL.'application/utms/edit-utm.php?source=list&utm='.$id.'" class="action-item" data-toggle="tooltip" data-placement="top" title="Edit URL with UTM"><i class="fas fa-edit"></i></a>';
                 $list .= '<a href="'.$site_URL.'application/utms/delete-utm.php?source=list&utm='.$id.'" class="action-item text-danger" data-toggle="tooltip" data-placement="top" title="Delete URL with UTM"><i class="fas fa-trash-alt"></i></a>';
                 $list .= '</td>';
 

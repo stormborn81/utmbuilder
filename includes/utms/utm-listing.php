@@ -23,6 +23,24 @@
                     </div>
                 </div>
             </div>
+            <!-- Error Handling if necessary -->
+            <?php if($error == 'delete-no-utm') { ?>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Houston, we have a problem.</strong><br > It appears you tried to delete a UTM without the proper link information. If you keep receiving this error, please let our support team know at <a href="mailto:utmbuilderspace@gmail.com" class="alert-link">utmbuilderspace@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <?php } else if($error == 'delete-general') {   ?>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Houston, we have a problem.</strong><br > There has been an error in trying to delete your UTM, please try again later. If you keep receiving this error, please let our support team know at <a href="mailto:utmbuilderspace@gmail.com" class="alert-link">utmbuilderspace@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
             <!-- UTM listings -->
             <?php if($numrows > 0) { ?>
             <div class="card">
@@ -92,7 +110,9 @@
               <input type="hidden" id="numrows" value="<?php echo $rowsperpage; ?>">
             </div>
             <?php }
-             } else { ?>
+             }
+
+            if($numrows < 5 ) { ?>
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
                    <div class="card card-fluid">

@@ -25,6 +25,7 @@
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                           </div>
                           <input type="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" id="input-email" placeholder="name@example.com" name="email" value="<?php echo (!empty($_POST["email"])) ? trim($_POST["email"]) : '';  ?>" >
+                          <div class="invalid-feedback"><?php echo $email_err; ?></div>
                         </div>
                       </div>
                       <div class="mt-4"><button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">
@@ -42,5 +43,6 @@
         </div>
       </div>
       <!-- Footer -->
+
     </div>
   </div>

@@ -6,7 +6,8 @@
 // Set Page meta data
 $pName = 'Recover password - UTMBuilder.space';
 $pDesc = 'UTM Builder is a tool to support marketing teams in building UTM tagging links for optimal analysis of performance.';
-
+global $emailType;
+$emailType = 'recover';
 // Define variables and initialize with empty values
 $email = "";
 $email_err = "";

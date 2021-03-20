@@ -6,15 +6,26 @@ use PHPMailer\PHPMailer\Exception;
 
     // Set up ability to use PHP Mailer
     /* Exception class. */
-    require 'PHPMailer/src/Exception.php';
+    if($emailType == 'recover') {
+        require 'PHPMailer/src/Exception.php';
 
-    /* The main PHPMailer class. */
-    require 'PHPMailer/src/PHPMailer.php';
+        /* The main PHPMailer class. */
+        require 'PHPMailer/src/PHPMailer.php';
 
-    /* SMTP class, needed if you want to use SMTP. */
-    require 'PHPMailer/src/SMTP.php';
+        /* SMTP class, needed if you want to use SMTP. */
+        require 'PHPMailer/src/SMTP.php';
+    } else {
+        require '../../PHPMailer/src/Exception.php';
+
+        /* The main PHPMailer class. */
+        require '../../PHPMailer/src/PHPMailer.php';
+
+        /* SMTP class, needed if you want to use SMTP. */
+        require '../../PHPMailer/src/SMTP.php';
+    }
 
     $mail = new PHPMailer(TRUE);
+
 
     /* Open the try/catch block. */
     try {
@@ -40,16 +51,31 @@ use PHPMailer\PHPMailer\Exception;
        /* Add a recipient. */
        $mail->addAddress($email, '');
 
-       /* Set the subject. */
-       $mail->Subject = 'This is your password reset for UTMBuilder.space';
+       if($emailType == 'recover') {
 
-       /* Set the mail message body. */
-       $mail->isHTML(true);
-       // Eventually change this to a variable so that multiple emails can be sent from this script
-       $mail->Body = 'Click On This Link to '.$link.' at UTMBuilder.space';
+           /* Set the subject. */
+           $mail->Subject = 'This is your password reset for UTMBuilder.space';
+
+           /* Set the mail message body. */
+           $mail->isHTML(true);
+           // Eventually change this to a variable so that multiple emails can be sent from this script
+           $mail->Body = 'Click On This Link to '.$link.' at UTMBuilder.space';
+       } else if($emailType=='support') {
+           /* Set the subject. */
+           $mail->Subject = 'A request for support has been made onsite at '.date('d-m-Y');
+
+           /* Set the mail message body. */
+           $mail->isHTML(true);
+           // Eventually change this to a variable so that multiple emails can be sent from this script
+           $mail->Body = 'Email:'.$email.'<br/>Name:'.$name.'<br/>Message:'.$message.'<br/>';
+
+
+       }
 
        /* Finally send the mail. */
        $mail->send();
+
+       $sendStatus = 'true';
 
     }
     catch (Exception $e)

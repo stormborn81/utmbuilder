@@ -7,7 +7,7 @@
  // Set Page meta data
  $pName = 'Create UTM - UTMBuilder.space';
  $pDesc = 'UTM Builder is a tool to support marketing teams in building UTM tagging links for optimal analysis of performance.';
-
+$page = 'create-utm';
  // Define variables and initialize with empty values
  $url = $channel = $source = $campaign = $content = $urlcomplete = $utm = "";
  $url_err = $channel_err = $source_err = $campaign_err = $content_err = "";
@@ -38,7 +38,7 @@
 
     // validate channel
     if(empty(trim($_POST["channel"]))){
-        $channel_err = "Please select a Channel for your traffic. Use the <a href='".$site_URL."blog/universal-GA-channel-definitions.php' target='_blank'>handy resource here</a> to find out more about Google Analytics channel definitions";
+        $channel_err = "Please select a Channel for your traffic. Use the <a href='".$site_URL."articles/universal-GA-channel-definitions.php' target='_blank'>handy resource here</a> to find out more about Google Analytics channel definitions";
     } else{
         $channel = trim($_POST["channel"]);
     }
@@ -79,7 +79,6 @@
                         $param_sID = $_POST['source'];
 
                         if($sstmt->execute()){
-
                             $sstmt->store_result();
 
                             $sstmt->bind_result($sourceVal);
@@ -104,11 +103,12 @@
                                 }
 
                                 // Insert URL/UTM record
-                                $urlSQL = 'INSERT INTO urlutm (URL, CREATED_BY, ACCOUNT_ID, CHANNEL_ID, SOURCE_ID) VALUES (?, ?, ?, ?,?)';
+                                $urlSQL = 'INSERT INTO urlutm (URL, CREATED_BY, ACCOUNT_ID, CHANNEL_ID, SOURCE_ID, CAMPAIGN, CONTENT, BASE_URL, DATE_UPDATED) VALUES (?, ?, ?, ?,?,?,?,?,now())';
 
                                 if($ustmt = $mysqli->prepare($urlSQL)){
 
-                                    $ustmt->bind_param("sssss", $param_url, $param_uID, $param_aID, $param_cID, $param_sID);
+
+                                    $ustmt->bind_param("ssssssss", $param_url, $param_uID, $param_aID, $param_cID, $param_sID, $param_campaign, $param_content, $param_base);
 
                                     // Set Parameter
                                     $param_url = $utm;
@@ -116,15 +116,20 @@
                                     $param_aID = $_SESSION['acct_id'];
                                     $param_cID = $channel;
                                     $param_sID = $source;
+                                    $param_campaign = $campaign;
+                                    $param_content = $content;
+                                    $param_base = $url;
 
                                     if($ustmt->execute()){
                                         $ustmt->store_result();
                                         $urlcomplete = "true";
 
                                     } else {
-                                        echo 'error inserting URL';
+                                        echo 'error inserting URL'.$mysqli->error;
                                     }
 
+                                } ELSE {
+                                    echo $mysqli->error;
                                 }
                             }
 

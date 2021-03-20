@@ -10,10 +10,10 @@
                   <a class="nav-link" href="<?php echo $site_URL; ?>application/support/support.php">Support</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo $site_URL; ?>legal/terms-conditions.html">Terms</a>
+                  <a class="nav-link" href="<?php echo $site_URL; ?>legal/terms-conditions.php">Terms</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pr-0" href="<?php echo $site_URL; ?>legal/privacy-policy.html">Privacy</a>
+                  <a class="nav-link pr-0" href="<?php echo $site_URL; ?>legal/privacy-policy.php">Privacy</a>
                 </li>
               </ul>
             </div>
