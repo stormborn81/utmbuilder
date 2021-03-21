@@ -1,4 +1,3 @@
-
 <?php
 // Check logged in status
  include ('../../includes/account/status.php');
@@ -30,14 +29,14 @@ $page = 'create-utm';
     }
 
     // validate source
-    if(empty(trim($_POST["source"]))){
+    if(empty(trim($_POST["source"])) || trim($_POST["source"]) == 'Select the source'){
         $source_err = "Please select a source. Use the Add source link above if the source you want does not exist.";
     } else{
         $source = trim($_POST["source"]);
     }
 
     // validate channel
-    if(empty(trim($_POST["channel"]))){
+    if(empty(trim($_POST["channel"])) || trim($_POST["channel"]) == 'Select the default channel grouping'){
         $channel_err = "Please select a Channel for your traffic. Use the <a href='".$site_URL."articles/universal-GA-channel-definitions.php' target='_blank'>handy resource here</a> to find out more about Google Analytics channel definitions";
     } else{
         $channel = trim($_POST["channel"]);
@@ -96,10 +95,10 @@ $page = 'create-utm';
                                 // add utm source
                                 $utm .= '&utm_source='.$sourceVal;
                                 // add utm campaign with encoding for spacing
-                                $utm .= '&utm_campaign='.urlencode($campaign);
+                                $utm .= '&utm_campaign='.str_replace(" ","-",strtolower($campaign));
                                 //if content is set add utm content with encoding for spacing
                                 if(!empty(trim($_POST["content"]))){
-                                    $utm .= '&utm_content='.urlencode(trim($_POST["content"]));
+                                    $utm .= '&utm_content='.str_replace(" ","-",strtolower(trim($_POST["content"])));
                                 }
 
                                 // Insert URL/UTM record

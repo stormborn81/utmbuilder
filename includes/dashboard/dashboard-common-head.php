@@ -4,7 +4,7 @@
     <div class="sidenav" id="sidenav-main">
       <!-- Sidenav header -->
       <div class="sidenav-header d-flex align-items-center">
-        <a class="navbar-brand" href="../index.php">
+        <a class="navbar-brand" href="<?php echo $site_URL; ?>dashboard.php">
           <img src="<?php echo $site_URL; ?>assets/img/brand/logo-white-space.png" class="navbar-brand-img" alt="UTMBuilder.space">
         </a>
         <div class="ml-auto">

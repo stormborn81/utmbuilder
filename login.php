@@ -7,7 +7,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: dashboard.php");
     exit;
 }
-
+echo '0';
 // Include config file
 require_once "includes/config/config.php";
 
@@ -21,7 +21,7 @@ $username_err = $password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
+echo '1';
     // Check if username is empty
     if(empty(trim($_POST["email"]))){
         $username_err = "Please enter email address.";
@@ -38,10 +38,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
+    echo '2';
         // Prepare a select statement - Future need to support different level types (basic or custom)
         $sql = "SELECT u.id, u.EMAIL, u.PASSWORD, u.ACCT_ID, a.COMPANY_NAME, u.IS_ACTIVE, a.IS_ACTIVE, a.NFP_STATUS FROM users u LEFT JOIN accounts a ON u.ACCT_ID = a.ID WHERE u.EMAIL = ?";
 
         if($stmt = $mysqli->prepare($sql)){
+            echo '3';
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("s", $param_username);
 
@@ -50,11 +52,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Attempt to execute the prepared statement
             if($stmt->execute()){
+                echo '4';
                 // Store result
                 $stmt->store_result();
 
                 // Check if username exists, if yes then verify password
                 if($stmt->num_rows == 1){
+                    echo '5';
                     // Bind result variables
                     $stmt->bind_result($id, $username, $hashed_password, $acct_id, $company_name, $user_active, $account_active, $nfp_status);
                     if($stmt->fetch()){
@@ -94,17 +98,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 $password_err = "The password you entered was not valid.";
                             }
                         }
+                    } else {
+                        echo $stmt->error;
                     }
                 } else{
                     // Display an error message if username doesn't exist
                     $username_err = "No account found with that email address.";
+
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
+                echo $stmt->error;
             }
             $stmt->close();
 
+        } else {
+            echo $mysqli->error;
         }
+
+        echo $mysqli->error;
     }
 
     // Close connection

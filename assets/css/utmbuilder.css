@@ -22,3 +22,6 @@ td.wrappable {
     text-decoration: none;
     background-color: transparent;
 }
+.extra-pad {
+    padding-top:3px;
+}

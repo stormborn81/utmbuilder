@@ -74,7 +74,7 @@
                                 <label class="form-control-label">
                                   Channel Grouping*
                                 </label>
-                                <select class="custom-select" name="channel" id="input-channel" required>
+                                <select class="custom-select <?php echo (!empty($channel_err)) ? 'is-invalid' : ''; ?>" name="channel" id="input-channel" required>
                                   <option>Select the default channel grouping</option>
                                   <?php echo $channels; ?>
                                 </select>
@@ -85,7 +85,7 @@
                                 <label class="form-control-label">
                                   Source*
                                 </label>
-                                <select class="custom-select" name="source" id="input-source" required>
+                                <select class="custom-select <?php echo (!empty($source_err)) ? 'is-invalid' : ''; ?>" name="source" id="input-source" required>
                                   <option>Select the source</option>
                                 </select>
                                 <div class="invalid-feedback"><?php echo $source_err; ?></div>

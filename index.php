@@ -33,8 +33,8 @@ include ('includes/header.php');?>
           </li>
           <li class="nav-item mr-0">
             <a href="<?php echo $site_URL; ?>create-account.php" target="_blank" class="nav-link d-lg-none">Signup now (Beta)</a>
-            <a href="<?php echo $site_URL; ?>create-account.php" target="_blank" class="btn btn-sm btn-white btn-icon rounded-pill d-none d-lg-inline-flex" data-toggle="tooltip" data-placement="left" title="" data-original-title="Go to Not For Profit Signup">
-              <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
+            <a href="<?php echo $site_URL; ?>create-account.php" target="_blank" class="btn btn-sm btn-white btn-icon rounded-pill d-none d-lg-inline-flex" data-toggle="tooltip" data-placement="left" title="" data-original-title="">
+              <span class="btn-inner--icon extra-pad"><i class="fas fa-plus"></i></span>
               <span class="btn-inner--text">Sign up now (Beta)</span>
             </a>
           </li>
