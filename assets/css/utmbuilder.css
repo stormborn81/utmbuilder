@@ -1,5 +1,6 @@
 .white {
     fill: #ffffff;
+    background: #ffffff !important;
 }
 td.wrappable {
 
@@ -24,4 +25,28 @@ td.wrappable {
 }
 .extra-pad {
     padding-top:3px;
+}
+
+#headers-header-2 {
+    margin-top:-1.5rem;
+}
+.card-img-top {
+    max-height:270px;
+}
+.card-body {
+    min-height:200px;
+}
+pre {
+    word-wrap: break-word;
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-size: 14px!important;
+    border: 1px solid #ddd;
+}
+article>h2, article>h3 {
+    margin-top:2.5rem;
+}
+.article-image {
+    text-align:center;
+    margin:2.25rem;
 }

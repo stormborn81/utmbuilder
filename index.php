@@ -5,43 +5,9 @@ $pName = 'Welcome to UTMBuilder.space';
 $pDesc = 'UTM Builder is a tool to support marketing teams in building UTM tagging links for optimal analysis of performance.';
 $page = 'public';
 
-include ('includes/header.php');?>
+include ('includes/header.php');
 
-<nav class="navbar navbar-main navbar-expand-lg navbar-dark bg-gradient-dark navbar-border py-3" id="navbar-main">
-    <div class="container px-lg-0">
-      <!-- Logo -->
-      <a class="navbar-brand mr-lg-5" href="index.php">
-        <img alt="UTMbuilder.space logo" src="assets/img/brand/logo-white-space.png" id="navbar-logo">
-      </a>
-      <!-- Navbar collapse trigger -->
-      <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Navbar nav -->
-      <div class="collapse navbar-collapse" id="navbar-main-collapse">
-        <ul class="navbar-nav align-items-lg-center">
-          <li class="nav-item ">
-            <a class="nav-link" href="application/support/support.php">Support</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="articles/home.php">Articles</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-          <li class="nav-item d-xl-block">
-            <a class="nav-link" href="<?php echo $site_URL; ?>login.php" target="_blank">Login</a>
-          </li>
-          <li class="nav-item mr-0">
-            <a href="<?php echo $site_URL; ?>create-account.php" target="_blank" class="nav-link d-lg-none">Signup now (Beta)</a>
-            <a href="<?php echo $site_URL; ?>create-account.php" target="_blank" class="btn btn-sm btn-white btn-icon rounded-pill d-none d-lg-inline-flex" data-toggle="tooltip" data-placement="left" title="" data-original-title="">
-              <span class="btn-inner--icon extra-pad"><i class="fas fa-plus"></i></span>
-              <span class="btn-inner--text">Sign up now (Beta)</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+include('includes/public-nav.php'); ?>
   <!-- Main Section -->
   <section class="slice slice-lg bg-gradient-dark header-web-app" data-offset-top="#header-main">
     <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
@@ -151,7 +117,7 @@ include ('includes/header.php');?>
           <div class="col-xl-6 col-lg-7">
             <h2 class="h1">Beta now open to Not-for-Profits.</h2>
             <p class="lead px-lg-5">
-              While we prepare our rocketships to blast out to space, we have decided to prove the UTMbuilder platform free-of-charge (forever) to Not-For-Profit organisations who need a bit of help understanding their marketing activity. When you sign up you'll be asked o confirm your NFP status before your account is opened.
+              While we prepare our rocketships to blast out to space, we have decided to provide the UTMbuilder platform free-of-charge (forever) to Not-For-Profit organisations who need a bit of help understanding their marketing activity. When you sign up you'll be asked to confirm your NFP status before your account is opened.
             </p>
             <a href="create-account.php" class="btn btn-primary btn-icon rounded-pill hover-translate-y-n3 mt-4">
                 <span class="btn-inner--text">Sign up for beta access today</span>
@@ -215,7 +181,7 @@ include ('includes/header.php');?>
                       <h5 class="mb-0">Understanding Channels in GA</h5>
                     </div>
                   </div>
-                  <p class="mt-4 mb-0">How the UTMs are classed into the GA channels and how channels are changing with the introduction of GA4.</p>
+                  <p class="mt-4 mb-0">Learn how UTMs are grouped into Google Analytics' channels and how these channels are evolving with the introduction of GA4.</p>
                   <a href="articles/universal-GA-channel-definitions.php" class="btn btn-primary rounded-pill hover-translate-y-n3 mt-4 d-none d-sm-inline-block" data-scroll-to="">Read article now</a>
                 </div>
               </div>
@@ -231,7 +197,7 @@ include ('includes/header.php');?>
                       <h5 class="mb-0">Reporting on Channel Traffic</h5>
                     </div>
                   </div>
-                  <p class="mt-4 mb-0">The definitive guide to reporting channels in Google Analytics + some helpful resources to launch you into space.</p>
+                  <p class="mt-4 mb-0">The definitive guide to reporting channels in Google Analytics + some helpful resources to launch your activity into space.</p>
                   <a href="articles/using-ga-to-view-channel-activity.php" class="btn btn-primary rounded-pill hover-translate-y-n3 mt-4 d-none d-sm-inline-block" data-scroll-to="">Read article now</a>
                 </div>
               </div>
@@ -239,19 +205,9 @@ include ('includes/header.php');?>
           </div>
         </div>
       </section>
-  <!-- footer -->
-  <footer class="footer footer-light bg-white pt-0">
-      <div class="container">
-        <div class="row align-items-center justify-content-md-between py-4 delimiter-top">
-          <div class="col-md-6">
-            <div class="copyright text-sm font-weight-bold text-center text-md-left">
-              © 2021 <a href="https://utmbuilder.space" class="h6 text-sm font-weight-bold" target="_blank">UTMBuilder.space</a>. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+
 <?php
+include('includes/public-footer.php');
 include ('includes/footer.php');
 ?>
 

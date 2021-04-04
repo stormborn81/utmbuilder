@@ -14,7 +14,7 @@
 
                          </div>
                          <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end">
-                             <a href="<?php echo $site_URL; ?>application/utms/add-source.php" class="btn btn-sm btn-white btn-icon rounded-pill" data-toggle="modal">
+                             <a href="<?php echo $site_URL; ?>application/utms/add-source.php" class="btn btn-sm btn-white btn-icon rounded-pill">
                                  <span class="btn-inner--icon"><i class="fab fa-sourcetree"></i></span>
                                  <span class="btn-inner--text">Add new source</span>
                              </a>
